@@ -17,7 +17,7 @@ long1 = int(postcode_info['result']['longitude'])
 lat1 = int(postcode_info['result']['latitude'])
 
 # add a listing
-conn_gamesdb.add_a_listing(4, "'Mark of the Ninja'", 6.90 + postcode1 + long1 + lat1)
+#conn_gamesdb.add_a_listing(4, "'Mark of the Ninja'", 6.90 + postcode1, long1, lat1)
 
 #postcode2info = conn_gamesdb.find_postcode_info('E2 8LU')
 #postcode3info = conn_gamesdb.find_postcode_info('E9 6RY')
@@ -31,7 +31,8 @@ conn_gamesdb.add_a_listing(4, "'Mark of the Ninja'", 6.90 + postcode1 + long1 + 
 #lat3 = (postcode3['result']['latitude'])
 
 
-
 # list all listings
 #print(conn_gamesdb.list_all_games("game_listings"))
 
+# read one listing
+#print(conn_gamesdb.read_one_game_listing("game_listings", 2))

@@ -13,7 +13,7 @@ class GamesListings(ConnectionMicrosoftServer):
 
     # Read a listing
     def read_one_game_listing(self, table, game_id):
-        query = self.filter_query(f"SELECT * FROM {table} WHERE recipe_id = {game_id}")
+        query = self.filter_query(f"SELECT * FROM {table} WHERE game_id = {game_id}")
         while True:
             record = query.fetchone()
             if record is None:
