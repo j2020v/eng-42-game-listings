@@ -8,27 +8,35 @@ password = 'Passw0rd2018'
 
 conn_gamesdb = GamesListings(server, database, username, password)
 
-# finding a postcode
-postcode_info = conn_gamesdb.find_postcode_info('EC2Y 5AS')
-postcode1 = (postcode_info['result']['postcode'])
-
+# finding info postcode1
+postcode_info = conn_gamesdb.find_postcode_info('E2 8LU')
+postcode1 = postcode_info['result']['postcode']
 # finding long and lat for postcode1
-long1 = int(postcode_info['result']['longitude'])
-lat1 = int(postcode_info['result']['latitude'])
+long1 = float(postcode_info['result']['longitude'])
+lat1 = float(postcode_info['result']['latitude'])
+
+# finding info postcode2
+postcode_info = conn_gamesdb.find_postcode_info('EC2Y 5AS')
+postcode2 = postcode_info['result']['postcode']
+# finding long and lat for postcode2
+long2 = float(postcode_info['result']['longitude'])
+lat2 = float(postcode_info['result']['latitude'])
+
+
+#update location for postcode1
+conn_gamesdb.update_game_listing('game_listings', 'location', "'E2 8LU'", 2)
+conn_gamesdb.update_game_listing('game_listings', 'longitude', long1, 2)
+conn_gamesdb.update_game_listing('game_listings', 'latitude', lat1, 2)
+
+#update location for postcode2
+conn_gamesdb.update_game_listing('game_listings', 'location', "'EC2Y 5AS'", 3)
+conn_gamesdb.update_game_listing('game_listings', 'longitude', long2, 3)
+conn_gamesdb.update_game_listing('game_listings', 'latitude', lat2, 3)
 
 # add a listing
-#conn_gamesdb.add_a_listing(4, "'Mark of the Ninja'", 6.90 + postcode1, long1, lat1)
+#conn_gamesdb.add_a_listing(3, "'NBA 2K19'", 13.49, "'EC2Y 5AS'", long2, lat2)
 
-#postcode2info = conn_gamesdb.find_postcode_info('E2 8LU')
-#postcode3info = conn_gamesdb.find_postcode_info('E9 6RY')
 
-# finding long and lat for postcode2
-#long2 = (postcode2['result']['longitude'])
-#lat2 = (postcode2['result']['latitude'])
-
-# finding long and lat for postcode3
-#long3 = (postcode3['result']['longitude'])
-#lat3 = (postcode3['result']['latitude'])
 
 
 # list all listings

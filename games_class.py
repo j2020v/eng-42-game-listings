@@ -35,5 +35,11 @@ class GamesListings(ConnectionMicrosoftServer):
         result = postcode_query.json()
         return result
 
+    # Update location, long, lat
+    def update_game_listing(self, table, column, value, game_id):
+        query_rows = self.filter_query(f"UPDATE {table} SET {column} = {value} WHERE game_id = {game_id}")
+        self.conn_gamesdb.commit()
+
+
 # As a user I want to insert a location to my listing (e.g. 125 London Wall) and I want it on my Db
 # As a user I want to be able to see a longitude and latitude to my listing and be on my Db
