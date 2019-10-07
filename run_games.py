@@ -14,6 +14,7 @@ print('(1) View all listings')
 print('(2) View one listing')
 print('(3) Add a game listing')
 print('(4) Update a listing')
+print('(5) Delete a listing')
 user_input = int(input("Enter your choice"))
 while True:
     if user_input == 1:
@@ -33,7 +34,7 @@ while True:
         game_lat_info = conn_gamesdb.find_lat_info(game_location)
         print(f'{game_name} has now been added to the listing!')
         conn_gamesdb.add_a_listing(game_id, game_name, game_price, game_location, game_long_info, game_lat_info)
-        break
+        user_input = int(input("Enter a choice again:"))
     elif user_input == 4:
         print("You have chosen to update a listing.")
         print(conn_gamesdb.list_all_games("game_listings"))
@@ -48,6 +49,12 @@ while True:
                 print("Your listing has now been updated!")
             else:
                 print("Try again")
+    elif user_input == 5:
+        user_input_delete_response = int(input("Which listing would you like to delete?"))
+        game_id_delete = user_input_delete_response
+        conn_gamesdb.delete_game_listing(game_id_delete)
+        print("Your listing has now been deleted!")
+        break
     else:
         print("I am not sure what you mean...")
         break

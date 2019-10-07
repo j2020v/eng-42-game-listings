@@ -47,11 +47,13 @@ class GamesListings(ConnectionMicrosoftServer):
 
     # Update listing
     def update_game_listing(self, column, value, game_id):
-        query = (f"UPDATE game_listings SET {column} = {value} WHERE game_id = {game_id}")
+        query = f"UPDATE game_listings SET {column} = {value} WHERE game_id = {game_id}"
         self.filter_query(query)
         self.conn_gamesdb.commit()
 
-
-# As a user I want to insert a location to my listing (e.g. 125 London Wall) and I want it on my Db
-# As a user I want to be able to see a longitude and latitude to my listing and be on my Db
+    # Delete listing
+    def delete_game_listing(self, game_id):
+        query = f"DELETE FROM game_listings WHERE game_id = {game_id}"
+        self.filter_query(query)
+        self.conn_gamesdb.commit()
 
