@@ -45,9 +45,9 @@ class GamesListings(ConnectionMicrosoftServer):
         self.conn_gamesdb.commit()
         return float(lat)
 
-    # Update location, long, lat
-    def update_game_listing(self, table, column, value, game_id):
-        query = (f"UPDATE {table} SET {column} = {value} WHERE game_id = {game_id}")
+    # Update listing
+    def update_game_listing(self, column, value, game_id):
+        query = (f"UPDATE game_listings SET {column} = {value} WHERE game_id = {game_id}")
         self.filter_query(query)
         self.conn_gamesdb.commit()
 
